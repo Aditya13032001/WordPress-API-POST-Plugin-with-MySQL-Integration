@@ -63,7 +63,7 @@ function send_teachable_request() {
         );
 
         // Send simplified request to Teachable API
-        $url = 'https://developers.teachable.com/v1/users';
+        $url = 'API_URL';
         $body = json_encode([
             'name' => $fullname,
             'email' => $email,
@@ -74,7 +74,7 @@ function send_teachable_request() {
             'body' => $body,
             'headers' => [
                 'Accept' => 'application/json',
-                'apiKey' => 'ZKfQc5TH3gFREory8EXT8ttdwCrR41Tk',
+                'apiKey' => 'API_KEY',
                 'Content-Type' => 'application/json',
             ],
         ]);
