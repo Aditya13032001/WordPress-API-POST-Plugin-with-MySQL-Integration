@@ -85,7 +85,7 @@ function send_teachable_request() {
         } else {
             $response_code = wp_remote_retrieve_response_code($response);
             if ($response_code == 201) {
-                echo "<p>User created successfully via Teachable API.</p>";
+                echo "<p>User created successfully.</p>";
             } else {
                 echo "<p>Request failed with status code $response_code.</p>";
             }
