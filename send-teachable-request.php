@@ -1,15 +1,15 @@
 <?php
 /*
-Plugin Name: Send Teachable Request
-Description: A plugin to create user via Teachable API and store form data in MySQL database.
+Plugin Name: Send  Request
+Description: A plugin to create user via  API and store form data in MySQL database.
 Version: 1.4
 Author: Aditya Gaikwad
 */
 
 // Create plugin table upon activation
-function send_teachable_request_activate() {
+function send_request_activate() {
     global $wpdb;
-    $table_name = $wpdb->prefix . 'teachable_users';
+    $table_name = $wpdb->prefix . 'users';
 
     $charset_collate = $wpdb->get_charset_collate();
 
@@ -27,10 +27,10 @@ function send_teachable_request_activate() {
     require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
     dbDelta($sql);
 }
-register_activation_hook(__FILE__, 'send_teachable_request_activate');
+register_activation_hook(__FILE__, 'send_request_activate');
 
 // Process form submission
-function send_teachable_request() {
+function send_request() {
     global $wpdb;
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['send'])) {
@@ -49,7 +49,7 @@ function send_teachable_request() {
         }
 
         // Store form data in database
-        $table_name = $wpdb->prefix . 'teachable_users';
+        $table_name = $wpdb->prefix . 'users';
         $wpdb->insert(
             $table_name,
             array(
@@ -62,7 +62,7 @@ function send_teachable_request() {
             )
         );
 
-        // Send simplified request to Teachable API
+        // Send simplified request to  API
         $url = 'API_URL';
         $body = json_encode([
             'name' => $fullname,
@@ -93,7 +93,7 @@ function send_teachable_request() {
     }
 }
 
-add_action('init', 'send_teachable_request');
+add_action('init', 'send_request');
 
 // Shortcode to display the form
 function add_send_button_shortcode() {
